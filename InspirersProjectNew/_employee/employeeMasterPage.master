@@ -1,0 +1,210 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="employeeMasterPage.master.cs" Inherits="_employee_employeeMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Employee Panel</title>
+    <style>
+        #btnSearch {
+            color: #738A9C;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Employee Timesheet" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
+
+    <!-- Custom CSS -->
+    <link href="../css/style.css" rel='stylesheet' type='text/css' />
+    <!-- font-awesome icons CSS -->
+    <link href="../css/font-awesome.css" rel="stylesheet" />
+    <link href="../css/invoice.css" rel="stylesheet" />
+
+    <!-- //font-awesome icons CSS-->
+
+    <!-- side nav css file -->
+    <link href='../css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css' />
+    <link href="../css/basic.css" rel="stylesheet" />
+    <!-- //side nav css file -->
+
+    <!-- js-->
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <!--webfonts-->
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet" />
+    <!--//webfonts-->
+
+
+    <!-- Metis Menu -->
+    <script src="../js/jquery.metisMenu.js"></script>
+    <script src="../js/metisMenu.min.js"></script>
+    <script src="../js/custom.js"></script>
+    <link href="../css/custom.css" rel="stylesheet" />
+    <!--//Metis Menu -->
+
+    <script src="../js/Chart.bundle.js"></script>
+    <script src="../js/utils.js"></script>
+
+    <script src="../js/bootstrap.js"></script>
+    <script type="text/javascript">
+        function ShowPopup(title, body) {
+            $("#MyPopup .modal-title").html(title);
+            $("#MyPopup .modal-body").html(body);
+            $("#MyPopup").modal("show");
+        }
+
+        function ShowYesNo(title, body) {
+            $("#YesNo .modal-title").text(title);
+            $("#YesNo .modal-body").html(body);
+            $("#YesNo").modal("show");
+        }
+    </script>
+    <script src="../js/pie-chart.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#ContentPlaceHolder1_attendance').pieChart({
+                barColor: '#2dde98',
+                trackColor: '#eee',
+                lineCap: 'round',
+                lineWidth: 8,
+                onStep: function (from, to, percent) {
+                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
+                }
+            });
+
+
+            $('#ContentPlaceHolder1_projectProgress').pieChart({
+                barColor: '#2dde98',
+                trackColor: '#eee',
+                lineCap: 'round',
+                lineWidth: 8,
+                onStep: function (from, to, percent) {
+                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
+                }
+            });
+
+
+
+        });
+    </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="wrapper">
+            <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+
+                <div class="header-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h1><a class="navbar-brand" href="" style="color: #1bbc9b;">Academy of Excellence</a></h1>
+
+                </div>
+                <div class="header-right">
+                    <div class="profile_details" style="margin-bottom: 10px">
+                        <ul>
+                            <li class="dropdown profile_details_drop">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <div class="profile_img">
+                                        <span class="prfil-img">
+                                            <asp:Image ID="empImage" runat="server" Style="width: 45px; height: 45px; margin-top: 5px;" />
+                                        </span>
+                                        <div class="user-name">
+                                            <asp:Label ID="adminName" runat="server" Text="Label"></asp:Label>
+                                            <br />
+                                            <asp:Label ID="type" runat="server" Text="Label"></asp:Label>
+
+                                        </div>
+                                        <i class="fa fa-angle-down lnr"></i>
+                                        <i class="fa fa-angle-up lnr"></i>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+
+                                <ul class="dropdown-menu drp-mnu">
+
+                                    <li>
+                                        <asp:LinkButton ID="LinkButton1" Text="text" runat="server" OnClick="logout" CausesValidation="False" ValidateRequestMode="Disabled"><i class="fa fa-sign-out"></i>Logout</asp:LinkButton></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </nav>
+
+            <nav class="navbar-default navbar-side" role="navigation">
+
+                <div class="sidebar-collapse">
+                    <ul class="sidebar-menu">
+                        <li class="header">MAIN NAVIGATION</li>
+                        <li class="treeview">
+                            <a href="dashboard.aspx">
+                                <i class="fa fa-dashboard"></i><span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-archive"></i>
+                                <span>History</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="ViewTimeSheet.aspx"><i class="fa fa-angle-right"></i>View Time Sheet</a></li>
+                                <li><a href="PayrollHistory.aspx"><i class="fa fa-angle-right"></i>Payroll History</a></li>
+                                <li><a href="ViewTasks.aspx"><i class="fa fa-angle-right"></i>View Daily Tasks</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-cog"></i>
+                                <span>Settings</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="ChangeLoginId.aspx"><i class="fa fa-angle-right"></i>Change Login Id</a></li>
+                                <li><a href="ChangeLoginPassword.aspx"><i class="fa fa-angle-right"></i>Change Login Password</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+            <div id="page-wrapper">
+                <div id="page-inner">
+                    <div>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+
+
+    <!--scrolling js-->
+    <script src="../js/jquery.nicescroll.js"></script>
+    <script src="../js/scripts.js"></script>
+    <!--//scrolling js-->
+
+    <!-- side nav js -->
+    <script src='../js/SidebarNav.min.js' type='text/javascript'></script>
+    <script>
+        $('.sidebar-menu').SidebarNav()
+    </script>
+</body>
+</html>

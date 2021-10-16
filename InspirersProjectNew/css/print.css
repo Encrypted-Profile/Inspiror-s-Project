@@ -1,0 +1,73 @@
+﻿#printSection {
+    padding: 20px 0px;
+    position: relative;
+    width: 400px;
+    border: 1px dashed black;
+    display: block;
+    clear: both;
+}
+
+img {
+    margin: 0px auto;
+    width: 120px;
+}
+
+.header {
+}
+
+.printTable {
+    font-size: 10px !important;
+    width: 100% !important;
+    font-family: 'Century Gothic' !important;
+    border: 1px solid black !important;
+}
+
+    .printTable > td {
+        padding: 5px;
+    }
+
+.page-head-line {
+    display: block;
+}
+
+.heading {
+    font-family: 'Agency FB';
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 18px;
+}
+
+.barCode {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-family: 'IDAutomationHC39M Free Version';
+}
+
+.title-light {
+    background-color: #000000;
+    color: white;
+    padding: 5px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 18px;
+}
+
+#stamp {
+    height: 100px;
+    border: 1px dashed black;
+}
